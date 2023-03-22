@@ -1,0 +1,15 @@
+#addIngredientBt{
+    margin-bottom: 20px;
+    margin-left: auto;
+    order: 2;
+}
+
+.action-button{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+:host ::ng-deep .p-colorpicker-overlay-panel {
+    position: static;
+}

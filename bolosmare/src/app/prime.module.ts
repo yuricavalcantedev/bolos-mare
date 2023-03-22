@@ -9,7 +9,14 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {ChipModule} from 'primeng/chip';
 import {TagModule} from 'primeng/tag';
 import {RippleModule} from 'primeng/ripple';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {InputTextModule} from 'primeng/inputtext';
 import {ColorPickerModule} from 'primeng/colorpicker';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {AutoFocusModule} from 'primeng/autofocus';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 @NgModule({
@@ -24,7 +31,15 @@ import {ColorPickerModule} from 'primeng/colorpicker';
     ChipModule,
     TagModule,
     RippleModule,
-    ColorPickerModule
+    MessageModule,
+    MessagesModule,
+    ColorPickerModule,
+    DynamicDialogModule,
+    InputTextModule,
+    InputNumberModule,
+    RadioButtonModule,
+    AutoFocusModule,
+    InputMaskModule
   ]
 })
 export class PrimeModule { }

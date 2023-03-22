@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ChartsManagementComponent } from './components/charts-management/charts-management.component';
@@ -9,8 +13,12 @@ import { OrderManagementComponent } from './components/order-management/order-ma
 import { ItemDialogComponent } from './components/dialogs/item-dialog/item-dialog.component';
 import { ProductDialogComponent } from './components/dialogs/product-dialog/product-dialog.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PrimeModule } from './prime.module';
+import { DialogService } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import { ItemService } from './services/item.service';
 
 @NgModule({
   declarations: [
@@ -23,11 +31,16 @@ import { PrimeModule } from './prime.module';
     ProductDialogComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    PrimeModule
+    HttpClientModule,
+    PrimeModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DialogService, MessageService, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,9 +4,8 @@ import { Product } from "./product.model";
 export class Item{
     id: number;
     name: string;
-    priority: number;
     quantity: number;
-    hexColor: string;
+    hexColor: string = '#FFFFFF';
     itemInProduct: ItemInProduct;
     price: number;
     supplyType: string = 'G';

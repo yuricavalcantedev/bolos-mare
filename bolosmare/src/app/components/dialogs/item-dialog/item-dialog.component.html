@@ -1,1 +1,39 @@
-<p>item-dialog works!</p>
+<div class="p-fluid grid">
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+        <div class="grid" >
+            <div class="col-12" style="margin-top: 0px;">
+                <h5>Nome *</h5>
+                <input pInputText type="text" formControlName="inputName" pAutoFocus [autofocus]="true" placeholder=""/>
+                <p-message severity="error" text="Nome do produto obrigatorio" *ngIf="!itemForm.controls['inputName'].valid && itemForm.controls['inputName'].dirty"></p-message>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col">
+                <h5>Preco *</h5>
+                <div class="p-inputgroup">
+                    <p-inputNumber formControlName="inputPrice" inputId="inputPrice" mode="decimal" locale="pt-BR" [minFractionDigits]="2" prefix="R$ " placeholder="0">
+                    </p-inputNumber>
+                    <p-message severity="error" text="Price eh obrigatorio" *ngIf="!itemForm.controls['inputPrice'].valid && itemForm.controls['inputPrice'].dirty"></p-message>
+                </div>
+            </div>
+            <div class="col">
+                <h5>Quantidade *</h5>
+                <input pInputText type="text" formControlName="inputQuantity" placeholder=""/>
+                <p-message severity="error" text="Price eh obrigatorio" *ngIf="!itemForm.controls['inputQuantity'].valid && itemForm.controls['inputQuantity'].dirty"></p-message>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-3">
+                <h5>Medida</h5>
+                <p-radioButton value="G"  formControlName="inputType" label="g"></p-radioButton>
+                <p-radioButton id="rb-ml" value="ML" formControlName="inputType" label="ml"></p-radioButton>
+            </div>
+            <div class="col-3">
+                <h5>Cor do ingrediente</h5>
+                <p-colorPicker formControlName="colorPicker"></p-colorPicker>
+            </div>
+        </div>
+
+        <button pButton pRipple type="submit" label="Salvar" class="p-button-success"></button>
+    </form>
+</div>
