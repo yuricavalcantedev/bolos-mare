@@ -1,13 +1,11 @@
-import { ItemInProduct } from "./itemInProduct.model";
 import { Product } from "./product.model";
 
 export class Item{
     id: number;
-    name: string;
+    name: string = '';
     quantity: number;
-    hexColor: string = '#FFFFFF';
-    itemInProduct: ItemInProduct;
     price: number;
+    hexColor: string = '#FFFFFF';
     supplyType: string = 'G';
     productList: Product[];
 

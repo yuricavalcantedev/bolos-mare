@@ -11,7 +11,7 @@
             <div class="col">
                 <h5>Preco *</h5>
                 <div class="p-inputgroup">
-                    <p-inputNumber formControlName="inputPrice" inputId="inputPrice" mode="decimal" locale="pt-BR" [minFractionDigits]="2" prefix="R$ " placeholder="0">
+                    <p-inputNumber formControlName="inputPrice" inputId="inputPrice" mode="decimal" locale="pt-BR" [minFractionDigits]="2" prefix="R$ " placeholder="">
                     </p-inputNumber>
                     <p-message severity="error" text="Price eh obrigatorio" *ngIf="!itemForm.controls['inputPrice'].valid && itemForm.controls['inputPrice'].dirty"></p-message>
                 </div>

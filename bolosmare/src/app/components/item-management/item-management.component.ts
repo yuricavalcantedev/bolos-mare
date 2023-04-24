@@ -30,7 +30,6 @@ export class ItemManagementComponent implements OnInit{
     
     let filteredItem = this.itemList.find(el => el.id == id);
     let item =  filteredItem != undefined ? filteredItem : new Item();
-    console.log(item);
     const ref = this.dialogService.open(ItemDialogComponent, {
       header: 'Ingrediente',
       width: '70%',

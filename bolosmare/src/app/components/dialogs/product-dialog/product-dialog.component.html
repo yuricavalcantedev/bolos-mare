@@ -1,1 +1,94 @@
-<p>product-dialog works!</p>
+<p-toast position="bottom-center" key="bc"></p-toast>
+<div class="p-fluid grid">
+    <form [formGroup]="productForm" >
+        <div class="grid" >
+            <div class="col" style="margin-top: 0px;">
+                <h5>Nome *</h5>
+                <input pInputText type="text" formControlName="inputName" pAutoFocus [autofocus]="true" placeholder=""/>
+                <p-message severity="error" text="Nome do produto obrigatorio" *ngIf="!productForm.controls['inputName'].valid && productForm.controls['inputName'].dirty"></p-message>
+            </div>
+            <div class="col">
+                <h5>Preco *</h5>
+                <div class="p-inputgroup">
+                    <p-inputNumber formControlName="inputPrice" inputId="inputPrice" mode="decimal" locale="pt-BR" [minFractionDigits]="2" prefix="R$ " placeholder="0">
+                    </p-inputNumber>
+                    <p-message severity="error" text="Price eh obrigatorio" *ngIf="!productForm.controls['inputPrice'].valid && productForm.controls['inputPrice'].dirty"></p-message>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="grid">
+    <div class="col-2">
+        <h5 style="font-size: 13px;">Lista de Ingredientes*</h5>
+    </div>
+    <div class="col" style="margin-left: 16px;">
+        <p-dropdown #itemDropdown [options]="itemList" (onChange)="onDrodownChange($event.value)"
+        [filter]="true" filterBy="name" [showClear]="true" placeholder="Selecione um ingrediente" optionLabel="name"></p-dropdown>
+    </div>
+</div>
+
+<form [formGroup]="itemForm" (ngSubmit)="addItemInProductList()">
+    <div class="p-fluid grid">
+        
+        <div class="col">
+            <h5>Quantidade*</h5>
+            <p-inputNumber type="text" formControlName="itemQuantity" id="quantity" placeholder=""/>
+        </div>
+        <div class="col">
+            <h5>Preco*</h5>
+            <p-inputNumber formControlName="itemPrice" inputId="price" mode="decimal" locale="pt-BR" [minFractionDigits]="2" prefix="R$ " placeholder="">
+            </p-inputNumber>
+        </div>
+        <div class="col">
+            <button pButton pRipple type="submit" label="Add" class="p-button-success" style="margin-top: 30px;"></button>
+        </div>
+    </div>
+</form>
+
+<p-divider *ngIf="itemInProductList.length > 0"></p-divider>
+
+<div class="grid" *ngIf="itemInProductList.length > 0">
+    <div class="col-1"> 
+        <h4>#</h4>
+    </div>
+    <div class="col-3">
+        <h4>Nome</h4>
+    </div>
+    <div class="col-3">
+        <h4>Preco</h4>
+    </div>
+    <div class="col-3">
+        <h4>Quantidade</h4>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
+
+<p-scrollPanel *ngIf="itemInProductList.length > 0" [style]="{ width: '100%', height: '75px' }">
+    <div class="grid" *ngFor="let itemInProduct of itemInProductList; index as i">
+        <div class="col-1" style="margin: auto;"> 
+            <h4 style="margin: auto;"># {{i + 1}}</h4>
+        </div>
+        <div class="col-3">
+            <input [disabled]="true" pInputText type="text" class="p-inputtext-sm" placeholder="Small" [(ngModel)]="itemInProduct.item.name" />
+        </div>
+        <div class="col-3">
+            <input pInputText type="text" class="p-inputtext-sm" placeholder="Small" [(ngModel)]="itemInProduct.item.price" />
+        </div>
+        <div class="col-3">
+            <input pInputText type="text" class="p-inputtext-sm" placeholder="Small" [(ngModel)]="itemInProduct.item.quantity" />
+        </div>
+        <div class="col-2">
+            <button icon="pi pi-trash" pButton pRipple type="button" class="p-button-sm p-button-danger action-button" (click)="removeItemFromProductList(itemInProduct)"></button>
+        </div>
+    </div>
+</p-scrollPanel>
+
+<p-divider></p-divider>
+
+<button pButton pRipple label="Salvar" class="p-button-success" style="float: right;" (click)="onSubmit()"></button>
+
+

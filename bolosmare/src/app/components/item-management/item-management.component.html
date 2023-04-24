@@ -1,10 +1,9 @@
 <p-toast position="bottom-center" key="bc"></p-toast>
-<div class="grid">
+<div class="grid" style="margin-right: 1px;">
     <button pButton pRipple type="button" id="addIngredientBt" label="Adicionar" (click)="openItemDialog(0)" class="p-button-raised p-button-success"></button>
 </div>
 
-<div class="grid">
-    <p-table [columns]="cols" [value]="itemList"  style="width: 100%;" [rowHover]="true"
+<p-table [columns]="cols" [value]="itemList" [rowHover]="true"
     [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
     [paginator]="true" >
         <ng-template pTemplate="header" let-columns>
@@ -26,7 +25,8 @@
                 <td>R$ {{item.price}}</td>
                 <td>{{item.quantity}}</td>
                 <td>
-                    <p-chip label="{{item.supplyType}}" styleClass="mr-2 custom-chip"></p-chip>
+                    <p-tag *ngIf="item.supplyType == 'G'" severity="info" value="g"></p-tag>
+                    <p-tag *ngIf="item.supplyType == 'ML'" severity="warning" value="ml"></p-tag>
                 </td>
                 <td>
                     <button icon="pi pi-pencil" pButton pRipple type="button" class="p-button-sm p-button-info action-button" (click)="openItemDialog(item.id)"></button>
@@ -35,4 +35,3 @@
             </tr>
         </ng-template>
     </p-table>
-</div>

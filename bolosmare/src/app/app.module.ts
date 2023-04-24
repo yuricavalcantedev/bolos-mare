@@ -19,6 +19,7 @@ import { PrimeModule } from './prime.module';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { ItemService } from './services/item.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { ItemService } from './services/item.service';
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [DialogService, MessageService, ItemService],
+  providers: [DialogService, MessageService, ItemService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

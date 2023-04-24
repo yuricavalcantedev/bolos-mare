@@ -17,6 +17,12 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {AutoFocusModule} from 'primeng/autofocus';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputMaskModule} from 'primeng/inputmask';
+import { DividerModule } from 'primeng/divider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+
+
 
 
 @NgModule({
@@ -39,7 +45,11 @@ import {InputMaskModule} from 'primeng/inputmask';
     InputNumberModule,
     RadioButtonModule,
     AutoFocusModule,
-    InputMaskModule
+    InputMaskModule,
+    DividerModule,
+    MultiSelectModule,
+    DropdownModule,
+    ScrollPanelModule
   ]
 })
 export class PrimeModule { }

@@ -5,10 +5,9 @@ export class Product{
 
     id: number;
     name: string;
-    description: string;
     price: number;
-    itemInProductList: ItemInProduct[];
-    orderList: Order[];
+    itemsList: ItemInProduct[] = [];
+    orderList: Order[] = [];
 
     constructor(){}
 

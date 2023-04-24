@@ -1,1 +1,30 @@
-<p>product-management works!</p>
+<p-toast position="bottom-center" key="bc"></p-toast>
+<div class="grid" style="margin-right: 1px;">
+    <button pButton pRipple type="button" id="addProductBt" label="Adicionar" (click)="openProductDialog(0)" class="p-button-raised p-button-success"></button>
+</div>
+
+<p-table [value]="productList" [rowHover]="true"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+    [paginator]="true" >
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Nome</th>
+                <th>Price</th>
+                <th>Lista de Ingredientes</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.name}}</td>
+                <td>R$ {{product.price}}</td>
+                <td>
+                    <p-chip *ngFor="let itemInProduct of product.itemsList" label="{{itemInProduct.item.name}}" [style]="{'margin-right': '10px'}"></p-chip>
+                </td>
+                <td>
+                    <button icon="pi pi-pencil" pButton pRipple type="button" class="p-button-sm p-button-info action-button" (click)="openProductDialog(product.id)"></button>
+                    <button icon="pi pi-trash" pButton pRipple type="button"class="p-button-sm p-button-danger action-button" (click)="deleteProduct(product.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
